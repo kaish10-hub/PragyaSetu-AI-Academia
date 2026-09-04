@@ -104,9 +104,9 @@ cp .env.example
 
 Ensure `.env.local` contains your Supabase credentials:
 ```env
-NEXT_PUBLIC_SUPABASE_URL=https://dithgsyoglxizncutipd.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
-SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+NEXT_PUBLIC_SUPABASE_URL=https://your-project-ref.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key-here
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key-here
 ```
 
 ### Step 3: Run Database Migration on Supabase

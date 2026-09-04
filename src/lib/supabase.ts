@@ -46,8 +46,8 @@ export interface Application {
   applied_at: string;
 }
 
-export const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://dithgsyoglxizncutipd.supabase.co";
-export const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRpdGhnc3lvZ2x4aXpuY3V0aXBkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODg1NDk2NTMsImV4cCI6MjEwNDEyNTY1M30.nY5n6mC5Q4LGAAl7kVeTd4G7mPrQc3OtV8n_VZL09oo";
+export const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://your-project-ref.supabase.co";
+export const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "your-anon-key";
 
 // Helper function to query Supabase REST API directly
 export async function supabaseFetch<T>(endpoint: string, options: RequestInit = {}): Promise<T | null> {
