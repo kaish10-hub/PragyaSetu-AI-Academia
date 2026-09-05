@@ -9,7 +9,6 @@ import { InternshipPlacementBoard } from "@/components/InternshipPlacementBoard"
 import { FacultyPortalModule } from "@/components/FacultyPortalModule";
 import { DigitalPortfolioModule } from "@/components/DigitalPortfolioModule";
 import { InstitutionalAnalytics } from "@/components/InstitutionalAnalytics";
-import { MigrationGuideModal } from "@/components/MigrationGuideModal";
 import { Footer } from "@/components/Footer";
 
 export default function Home() {
@@ -17,7 +16,7 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState<ActiveTab>("overview");
 
   return (
-    <div className="min-h-screen bg-[#050506] text-[#EDEDEF] relative overflow-x-hidden selection:bg-[#5E6AD2] selection:text-white">
+    <div className="min-h-screen bg-[#17181E] text-[#EDEDEF] relative overflow-x-hidden selection:bg-[#5E6AD2] selection:text-white">
       {/* Layered Ambient Depth Lighting */}
       <BackgroundAmbient />
 
@@ -49,7 +48,7 @@ export default function Home() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div 
                     onClick={() => setActiveTab("assessment")}
-                    className="p-6 rounded-2xl bg-[#0A0A0E]/80 border border-white/10 hover:border-[#5E6AD2]/50 transition-all cursor-pointer group"
+                    className="p-6 rounded-2xl bg-[#1C1D24]/90 border border-white/10 hover:border-[#5E6AD2]/50 transition-all cursor-pointer group"
                   >
                     <div className="w-10 h-10 rounded-xl bg-[#5E6AD2]/20 border border-[#5E6AD2]/40 text-[#7B88ED] flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                       🧠
@@ -62,7 +61,7 @@ export default function Home() {
 
                   <div 
                     onClick={() => setActiveTab("opportunities")}
-                    className="p-6 rounded-2xl bg-[#0A0A0E]/80 border border-white/10 hover:border-emerald-500/50 transition-all cursor-pointer group"
+                    className="p-6 rounded-2xl bg-[#1C1D24]/90 border border-white/10 hover:border-emerald-500/50 transition-all cursor-pointer group"
                   >
                     <div className="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                       💼
@@ -75,7 +74,7 @@ export default function Home() {
 
                   <div 
                     onClick={() => setActiveTab("faculty")}
-                    className="p-6 rounded-2xl bg-[#0A0A0E]/80 border border-white/10 hover:border-purple-500/50 transition-all cursor-pointer group"
+                    className="p-6 rounded-2xl bg-[#1C1D24]/90 border border-white/10 hover:border-purple-500/50 transition-all cursor-pointer group"
                   >
                     <div className="w-10 h-10 rounded-xl bg-purple-500/20 border border-purple-500/40 text-purple-300 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                       🎓
@@ -88,7 +87,7 @@ export default function Home() {
 
                   <div 
                     onClick={() => setActiveTab("analytics")}
-                    className="p-6 rounded-2xl bg-[#0A0A0E]/80 border border-white/10 hover:border-amber-500/50 transition-all cursor-pointer group"
+                    className="p-6 rounded-2xl bg-[#1C1D24]/90 border border-white/10 hover:border-amber-500/50 transition-all cursor-pointer group"
                   >
                     <div className="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                       📊
@@ -104,22 +103,19 @@ export default function Home() {
           )}
 
           {/* TAB 2: SKILL ASSESSMENT */}
-          {activeTab === "assessment" && <SkillAssessmentModule />}
+          {activeTab === "assessment" && <SkillAssessmentModule activeRole={activeRole} />}
 
           {/* TAB 3: OPPORTUNITIES MARKETPLACE */}
           {activeTab === "opportunities" && <InternshipPlacementBoard activeRole={activeRole} />}
 
           {/* TAB 4: FACULTY PORTAL */}
-          {activeTab === "faculty" && <FacultyPortalModule />}
+          {activeTab === "faculty" && <FacultyPortalModule activeRole={activeRole} />}
 
           {/* TAB 5: DIGITAL PORTFOLIO */}
-          {activeTab === "portfolio" && <DigitalPortfolioModule />}
+          {activeTab === "portfolio" && <DigitalPortfolioModule activeRole={activeRole} />}
 
           {/* TAB 6: INSTITUTIONAL ANALYTICS */}
-          {activeTab === "analytics" && <InstitutionalAnalytics />}
-
-          {/* TAB 7: SUPABASE DATABASE MIGRATION */}
-          {activeTab === "supabase" && <MigrationGuideModal />}
+          {activeTab === "analytics" && <InstitutionalAnalytics activeRole={activeRole} />}
         </main>
 
         <Footer />

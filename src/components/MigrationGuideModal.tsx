@@ -99,7 +99,7 @@ export function MigrationGuideModal() {
 
       {/* 3 Step Execution Guide */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-        <SpotlightCard className="p-5 border border-white/20 bg-[#0A0A0E]/95 rounded-2xl space-y-2 shadow-lg">
+        <SpotlightCard className="p-5 border border-white/20 bg-[#1C1D24]/95 rounded-2xl space-y-2 shadow-lg">
           <div className="flex items-center gap-2.5 text-sm font-mono text-indigo-300 font-bold">
             <span className="w-6 h-6 rounded-full bg-[#5E6AD2]/40 flex items-center justify-center text-xs font-bold text-white">1</span>
             <span>Open Supabase SQL Editor</span>
@@ -109,7 +109,7 @@ export function MigrationGuideModal() {
           </p>
         </SpotlightCard>
 
-        <SpotlightCard className="p-5 border border-white/20 bg-[#0A0A0E]/95 rounded-2xl space-y-2 shadow-lg">
+        <SpotlightCard className="p-5 border border-white/20 bg-[#1C1D24]/95 rounded-2xl space-y-2 shadow-lg">
           <div className="flex items-center gap-2.5 text-sm font-mono text-indigo-300 font-bold">
             <span className="w-6 h-6 rounded-full bg-[#5E6AD2]/40 flex items-center justify-center text-xs font-bold text-white">2</span>
             <span>Paste & Execute Migration</span>
@@ -119,7 +119,7 @@ export function MigrationGuideModal() {
           </p>
         </SpotlightCard>
 
-        <SpotlightCard className="p-5 border border-white/20 bg-[#0A0A0E]/95 rounded-2xl space-y-2 shadow-lg">
+        <SpotlightCard className="p-5 border border-white/20 bg-[#1C1D24]/95 rounded-2xl space-y-2 shadow-lg">
           <div className="flex items-center gap-2.5 text-sm font-mono text-indigo-300 font-bold">
             <span className="w-6 h-6 rounded-full bg-[#5E6AD2]/40 flex items-center justify-center text-xs font-bold text-white">3</span>
             <span>Configure .env.local</span>
@@ -131,8 +131,8 @@ export function MigrationGuideModal() {
       </div>
 
       {/* Code Window Preview */}
-      <SpotlightCard className="p-0 border border-white/10 bg-[#060609] rounded-2xl overflow-hidden shadow-2xl">
-        <div className="px-4 py-3 border-b border-white/[0.08] bg-[#0A0A0E] flex items-center justify-between">
+      <SpotlightCard className="p-0 border border-white/10 bg-[#15161C] rounded-2xl overflow-hidden shadow-2xl">
+        <div className="px-4 py-3 border-b border-white/[0.08] bg-[#1C1D24] flex items-center justify-between">
           <div className="flex items-center gap-2 font-mono text-xs text-gray-400">
             <Terminal className="w-3.5 h-3.5 text-[#7B88ED]" />
             <span>supabase/migrations/20260905000000_sih26044_pragya_setu.sql</span>

@@ -2,19 +2,19 @@
 
 @layer base {
   :root {
-    --bg-deep: #020203;
-    --bg-base: #050506;
-    --bg-elevated: #0a0a0c;
-    --surface: rgba(255, 255, 255, 0.05);
-    --surface-hover: rgba(255, 255, 255, 0.08);
-    --foreground: #EDEDEF;
-    --foreground-muted: #8A8F98;
-    --foreground-subtle: rgba(255, 255, 255, 0.60);
+    --bg-deep: #E7EAF0;
+    --bg-base: #F5F7FA;
+    --bg-elevated: #FFFFFF;
+    --surface: rgba(15, 23, 42, 0.045);
+    --surface-hover: rgba(15, 23, 42, 0.08);
+    --foreground: #172033;
+    --foreground-muted: #5F6B7A;
+    --foreground-subtle: rgba(23, 32, 51, 0.68);
     --accent: #5E6AD2;
     --accent-bright: #6872D9;
     --accent-glow: rgba(94, 106, 210, 0.3);
-    --border-default: rgba(255, 255, 255, 0.06);
-    --border-hover: rgba(255, 255, 255, 0.10);
+    --border-default: rgba(15, 23, 42, 0.12);
+    --border-hover: rgba(15, 23, 42, 0.22);
     --border-accent: rgba(94, 106, 210, 0.30);
   }
 
@@ -30,11 +30,11 @@
 
 /* Custom Multi-Layer Shadows & Glows */
 .shadow-linear-card {
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 2px 20px rgba(0, 0, 0, 0.4), 0 0 40px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.08), 0 2px 20px rgba(15, 23, 42, 0.10), 0 0 40px rgba(15, 23, 42, 0.05);
 }
 
 .shadow-linear-hover {
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12), 0 8px 40px rgba(0, 0, 0, 0.5), 0 0 80px rgba(94, 106, 210, 0.15);
+  box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.14), 0 8px 40px rgba(15, 23, 42, 0.16), 0 0 80px rgba(94, 106, 210, 0.15);
 }
 
 .shadow-accent-glow {
@@ -46,19 +46,19 @@
 }
 
 .shadow-inner-highlight {
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.8);
 }
 
 /* Gradient Background Systems */
 .bg-base-radial {
-  background: radial-gradient(ellipse at top, #0a0a0f 0%, #050506 50%, #020203 100%);
+  background: radial-gradient(ellipse at top, #FFFFFF 0%, #F5F7FA 50%, #E7EAF0 100%);
 }
 
 .bg-grid-pattern {
   background-size: 64px 64px;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    linear-gradient(to right, rgba(15, 23, 42, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.045) 1px, transparent 1px);
 }
 
 /* Keyframe Animations */
@@ -143,12 +143,90 @@
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #050506;
+  background: #E7EAF0;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(15, 23, 42, 0.20);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(15, 23, 42, 0.32);
+}
+
+/* Light theme bridge for existing component utility classes. */
+[class*="bg-[#14151A]"],
+[class*="bg-[#15161C]"],
+[class*="bg-[#17181E]"],
+[class*="bg-[#18191F]"],
+[class*="bg-[#191A21]"],
+[class*="bg-[#1B1C22]"],
+[class*="bg-[#1C1D24]"],
+[class*="bg-[#20212A]"] {
+  background-color: var(--bg-elevated) !important;
+}
+
+[class*="bg-[#252630]"] {
+  background-color: #EEF1F6 !important;
+}
+
+[class*="bg-white/"] {
+  background-color: rgba(15, 23, 42, 0.055) !important;
+}
+
+[class*="border-white"] {
+  border-color: rgba(15, 23, 42, 0.14) !important;
+}
+
+body .text-white,
+body [class*="text-[#EDEDEF]"] {
+  color: var(--foreground) !important;
+}
+
+body h1.text-white,
+body h2.text-white,
+body h3.text-white,
+body h4.text-white,
+body p.text-white,
+body span.text-white,
+body div.text-white,
+body button.text-white,
+body a.text-white {
+  color: var(--foreground) !important;
+}
+
+body h1,
+body h2,
+body h3,
+body h4 {
+  color: var(--foreground) !important;
+}
+
+body .text-gray-100,
+body .text-gray-200,
+body .text-gray-300 {
+  color: #334155 !important;
+}
+
+body .text-gray-400,
+body .text-gray-500,
+body [class*="text-[#8A8F98]"] {
+  color: #64748B !important;
+}
+
+body [class*="bg-[#5E6AD2]"][class~="text-white"],
+body [class*="bg-emerald-600"][class~="text-white"],
+body [class*="bg-gradient"][class~="text-white"],
+body [class*="bg-[#5E6AD2]"] .text-white,
+body [class*="bg-emerald-600"] .text-white,
+body [class*="bg-gradient"] .text-white {
+  color: #FFFFFF !important;
+}
+
+@layer base {
+  body h1,
+  body h2,
+  body h3,
+  body h4 {
+    color: var(--foreground) !important;
+  }
 }

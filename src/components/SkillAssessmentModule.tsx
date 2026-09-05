@@ -14,9 +14,11 @@ import {
   RotateCcw,
   Check,
   Zap,
-  Star
+  Star,
+  Users
 } from "lucide-react";
 import { SpotlightCard } from "./SpotlightCard";
+import { ActiveRole } from "./Navbar";
 
 interface Question {
   id: number;
@@ -82,7 +84,11 @@ const sampleQuestions: Question[] = [
   }
 ];
 
-export function SkillAssessmentModule() {
+interface SkillAssessmentModuleProps {
+  activeRole: ActiveRole;
+}
+
+export function SkillAssessmentModule({ activeRole }: SkillAssessmentModuleProps) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<Record<number, number>>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -120,6 +126,63 @@ export function SkillAssessmentModule() {
     { name: "Clinical Research Protocols", score: 55, target: 80, status: "Action Required", color: "bg-rose-500" }
   ];
 
+  if (activeRole === "industry") {
+    return (
+      <div className="space-y-8">
+        <div className="border-b border-white/15 pb-6">
+          <div className="flex items-center gap-3 mb-1.5">
+            <span className="p-2 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-500"><BarChart className="w-6 h-6" /></span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Candidate Skill Signals</h2>
+          </div>
+          <p className="text-sm sm:text-base text-gray-300 font-medium">Review aggregate skill readiness and benchmark coverage across the candidate pool.</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <SpotlightCard className="p-6 bg-[#1C1D24]/90"><div className="text-xs text-gray-400 mb-2">Candidates Assessed</div><div className="text-3xl font-bold text-white">8,420</div><div className="text-xs text-emerald-500 mt-2">Across verified student profiles</div></SpotlightCard>
+          <SpotlightCard className="p-6 bg-[#1C1D24]/90"><div className="text-xs text-gray-400 mb-2">Average Industry Match</div><div className="text-3xl font-bold text-emerald-500">82%</div><div className="text-xs text-gray-400 mt-2">Up 6.4% this cohort</div></SpotlightCard>
+          <SpotlightCard className="p-6 bg-[#1C1D24]/90"><div className="text-xs text-gray-400 mb-2">Top Talent Signal</div><div className="text-xl font-bold text-[#7B88ED]">Biomedical AI</div><div className="text-xs text-gray-400 mt-2">Highest benchmark coverage</div></SpotlightCard>
+        </div>
+        <SpotlightCard className="p-6 bg-[#1C1D24]/90">
+          <h3 className="text-base font-semibold text-white mb-4">Priority Skill Signals</h3>
+          <div className="space-y-4">
+            {skillProfile.slice(0, 4).map(skill => (
+              <div key={skill.name} className="space-y-1.5">
+                <div className="flex justify-between text-xs"><span className="text-white font-medium">{skill.name}</span><span className="text-gray-400">{skill.score}% readiness</span></div>
+                <div className="h-2 rounded-full bg-white/10 overflow-hidden"><div className={`h-full ${skill.color} rounded-full`} style={{ width: `${skill.score}%` }} /></div>
+              </div>
+            ))}
+          </div>
+        </SpotlightCard>
+      </div>
+    );
+  }
+
+  if (activeRole === "academician" || activeRole === "institution") {
+    return (
+      <div className="space-y-8">
+        <div className="border-b border-white/15 pb-6">
+          <div className="flex items-center gap-3 mb-1.5">
+            <span className="p-2 rounded-xl bg-purple-500/20 border border-purple-500/40 text-purple-500"><Users className="w-6 h-6" /></span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Cohort Skill Gap Summary</h2>
+          </div>
+          <p className="text-sm sm:text-base text-gray-300 font-medium">Monitor cohort-level strengths, benchmark gaps, and remedial priorities without entering an individual quiz.</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <SpotlightCard className="p-6 bg-[#1C1D24]/90"><div className="text-xs text-gray-400 mb-2">Cohort Readiness</div><div className="text-3xl font-bold text-emerald-500">78.6%</div><div className="text-xs text-gray-400 mt-2">Across current academic intake</div></SpotlightCard>
+          <SpotlightCard className="p-6 bg-[#1C1D24]/90"><div className="text-xs text-gray-400 mb-2">Largest Skill Gap</div><div className="text-xl font-bold text-amber-500">Clinical Research</div><div className="text-xs text-gray-400 mt-2">22 percentage points below target</div></SpotlightCard>
+          <SpotlightCard className="p-6 bg-[#1C1D24]/90"><div className="text-xs text-gray-400 mb-2">Remedial Learners</div><div className="text-3xl font-bold text-[#7B88ED]">1,284</div><div className="text-xs text-gray-400 mt-2">Assigned bridge programs</div></SpotlightCard>
+        </div>
+        <SpotlightCard className="p-6 bg-[#1C1D24]/90">
+          <h3 className="text-base font-semibold text-white mb-4">Cohort Priority Areas</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+            <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20"><div className="font-semibold text-amber-500">Ayush GCP Ethics</div><div className="text-xs text-gray-400 mt-1">31% need reinforcement</div></div>
+            <div className="p-4 rounded-xl bg-indigo-500/10 border border-indigo-500/20"><div className="font-semibold text-indigo-500">AI Data Analysis</div><div className="text-xs text-gray-400 mt-1">24% need reinforcement</div></div>
+            <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20"><div className="font-semibold text-emerald-500">Full-Stack Web APIs</div><div className="text-xs text-gray-400 mt-1">18% need reinforcement</div></div>
+          </div>
+        </SpotlightCard>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-8">
       {/* Header & Mode Selector */}
@@ -139,7 +202,7 @@ export function SkillAssessmentModule() {
         </div>
 
         {/* Tab Selector */}
-        <div className="flex items-center gap-1.5 bg-[#0D0D12] p-1.5 rounded-2xl border border-white/20 shadow-inner">
+        <div className="flex items-center gap-1.5 bg-[#20212A] p-1.5 rounded-2xl border border-white/20 shadow-inner">
           <button
             onClick={() => setActiveTab("quiz")}
             className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all ${
@@ -169,7 +232,7 @@ export function SkillAssessmentModule() {
 
       {/* TAB 1: QUESTIONNAIRE */}
       {activeTab === "quiz" && (
-        <SpotlightCard className="p-6 sm:p-8 border border-white/20 bg-[#0A0A0E]/95 rounded-2xl relative shadow-2xl">
+        <SpotlightCard className="p-6 sm:p-8 border border-white/20 bg-[#1C1D24]/95 rounded-2xl relative shadow-2xl">
           {!isSubmitted ? (
             <div>
               {/* Question Meta */}
@@ -284,7 +347,7 @@ export function SkillAssessmentModule() {
       {activeTab === "report" && (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Left: Overall Profile Card */}
-          <SpotlightCard className="p-6 border border-white/10 bg-[#0A0A0E]/90 rounded-2xl flex flex-col justify-between">
+          <SpotlightCard className="p-6 border border-white/10 bg-[#1C1D24]/90 rounded-2xl flex flex-col justify-between">
             <div>
               <div className="text-xs font-mono text-[#7B88ED] uppercase mb-1">Automated Skill Index</div>
               <h3 className="text-xl font-bold text-white mb-4">Overall Proficiency: 75%</h3>
@@ -318,7 +381,7 @@ export function SkillAssessmentModule() {
           </SpotlightCard>
 
           {/* Right: Detailed Skill Gap Bars */}
-          <SpotlightCard className="lg:col-span-2 p-6 border border-white/10 bg-[#0A0A0E]/90 rounded-2xl">
+            <SpotlightCard className="lg:col-span-2 p-6 border border-white/10 bg-[#1C1D24]/90 rounded-2xl">
             <h3 className="text-base font-semibold text-white mb-4 flex items-center gap-2">
               <BarChart className="w-4 h-4 text-[#7B88ED]" />
               <span>Skill Gap Analysis vs Industry Benchmarks</span>
@@ -378,7 +441,7 @@ export function SkillAssessmentModule() {
       {/* TAB 3: RECOMMENDED COURSES & TRAINING */}
       {activeTab === "courses" && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <SpotlightCard className="p-5 border border-white/10 bg-[#0A0A0E]/90 rounded-2xl flex flex-col justify-between">
+          <SpotlightCard className="p-5 border border-white/10 bg-[#1C1D24]/90 rounded-2xl flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-3">
                 <span className="text-[10px] font-mono text-purple-300 bg-purple-500/20 px-2 py-0.5 rounded border border-purple-500/30">
@@ -401,7 +464,7 @@ export function SkillAssessmentModule() {
             </button>
           </SpotlightCard>
 
-          <SpotlightCard className="p-5 border border-white/10 bg-[#0A0A0E]/90 rounded-2xl flex flex-col justify-between">
+          <SpotlightCard className="p-5 border border-white/10 bg-[#1C1D24]/90 rounded-2xl flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-3">
                 <span className="text-[10px] font-mono text-emerald-300 bg-emerald-500/20 px-2 py-0.5 rounded border border-emerald-500/30">
@@ -424,7 +487,7 @@ export function SkillAssessmentModule() {
             </button>
           </SpotlightCard>
 
-          <SpotlightCard className="p-5 border border-white/10 bg-[#0A0A0E]/90 rounded-2xl flex flex-col justify-between">
+          <SpotlightCard className="p-5 border border-white/10 bg-[#1C1D24]/90 rounded-2xl flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-3">
                 <span className="text-[10px] font-mono text-blue-300 bg-blue-500/20 px-2 py-0.5 rounded border border-blue-500/30">

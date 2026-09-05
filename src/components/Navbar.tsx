@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { 
   Menu, 
   X, 
-  ChevronRight, 
+  ChevronRight,
   GraduationCap, 
   Briefcase, 
   UserCheck, 
@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 
 export type ActiveRole = "student" | "industry" | "academician" | "institution";
-export type ActiveTab = "overview" | "assessment" | "opportunities" | "faculty" | "portfolio" | "analytics" | "supabase";
+export type ActiveTab = "overview" | "assessment" | "opportunities" | "faculty" | "portfolio" | "analytics";
 
 interface NavbarProps {
   activeRole: ActiveRole;
@@ -69,17 +69,18 @@ export function Navbar({ activeRole, setActiveRole, activeTab, setActiveTab }: N
   const RoleIcon = currentRole.icon;
 
   // Short concise keywords for navbar
-  const navItems: { id: ActiveTab; label: string; icon: React.ElementType }[] = [
+  const navItems: { id: ActiveTab; label: string; icon: React.ElementType; roles?: ActiveRole[] }[] = [
     { id: "overview", label: "Overview", icon: Layers },
-    { id: "assessment", label: "Assessment", icon: BrainCircuit },
+    { id: "assessment", label: "Assessment", icon: BrainCircuit, roles: ["student", "academician", "institution"] },
     { id: "opportunities", label: "Opportunities", icon: Briefcase },
-    { id: "faculty", label: "Faculty", icon: UserCheck },
-    { id: "portfolio", label: "Portfolio", icon: Award },
-    { id: "analytics", label: "Analytics", icon: BarChart3 }
+    { id: "faculty", label: "Faculty", icon: UserCheck, roles: ["academician", "institution"] },
+    { id: "portfolio", label: "Portfolio", icon: Award, roles: ["student", "industry", "academician"] },
+    { id: "analytics", label: "Analytics", icon: BarChart3, roles: ["academician", "institution"] }
   ];
+  const visibleNavItems = navItems.filter(item => !item.roles || item.roles.includes(activeRole));
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/15 bg-[#07070A]/95 backdrop-blur-2xl shadow-[0_10px_30px_rgba(0,0,0,0.8)] transition-all duration-300">
+    <header className="sticky top-0 z-50 w-full border-b border-white/15 bg-[#18191F]/95 backdrop-blur-2xl shadow-[0_10px_30px_rgba(0,0,0,0.45)] transition-all duration-300">
       <div className="w-full px-4 sm:px-8 lg:px-12 h-20 flex items-center justify-between gap-6">
         
         {/* Brand Logo */}
@@ -105,7 +106,7 @@ export function Navbar({ activeRole, setActiveRole, activeTab, setActiveTab }: N
 
         {/* Desktop Navigation Links — Short Concise Keywords (2X Font) */}
         <nav className="hidden lg:flex items-center gap-2 bg-white/[0.08] p-2 rounded-2xl border border-white/20 shadow-inner">
-          {navItems.map((item) => {
+          {visibleNavItems.map((item) => {
             const Icon = item.icon;
             const isActive = activeTab === item.id;
             return (
@@ -143,7 +144,6 @@ export function Navbar({ activeRole, setActiveRole, activeTab, setActiveTab }: N
             <ChevronRight className={`w-4 h-4 text-gray-300 transition-transform ${roleDropdownOpen ? "rotate-90" : ""}`} />
           </button>
 
-          {/* Role Dropdown Menu */}
           <AnimatePresence>
             {roleDropdownOpen && (
               <motion.div
@@ -151,39 +151,30 @@ export function Navbar({ activeRole, setActiveRole, activeTab, setActiveTab }: N
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 8, scale: 0.95 }}
                 transition={{ duration: 0.15 }}
-                className="absolute right-0 mt-3 w-72 rounded-2xl bg-[#0D0D12] border border-white/20 shadow-[0_15px_50px_rgba(0,0,0,0.9)] p-2.5 z-50 backdrop-blur-2xl"
+                className="absolute right-0 mt-3 w-72 rounded-2xl bg-[#20212A] border border-white/20 shadow-[0_15px_50px_rgba(0,0,0,0.55)] p-2.5 z-50 backdrop-blur-2xl"
               >
                 <div className="px-3 py-2 border-b border-white/10 mb-1.5">
                   <div className="text-xs font-mono text-indigo-300 font-bold uppercase tracking-wider">Select Persona View</div>
                   <div className="text-xs text-gray-300">Experience platform by user role</div>
                 </div>
-
                 {(Object.keys(roleConfig) as ActiveRole[]).map((roleKey) => {
-                  const r = roleConfig[roleKey];
-                  const Icon = r.icon;
+                  const role = roleConfig[roleKey];
+                  const Icon = role.icon;
                   const isSelected = activeRole === roleKey;
                   return (
                     <button
                       key={roleKey}
                       onClick={() => {
                         setActiveRole(roleKey);
+                        setActiveTab("overview");
                         setRoleDropdownOpen(false);
                       }}
-                      className={`w-full flex items-center gap-3 px-3.5 py-3 rounded-xl transition-all text-left ${
-                        isSelected 
-                          ? "bg-[#5E6AD2]/30 border border-[#5E6AD2]/60 text-white font-semibold shadow-sm" 
-                          : "hover:bg-white/[0.08] text-gray-200 hover:text-white border border-transparent"
-                      }`}
+                      className={`w-full flex items-center gap-3 px-3.5 py-3 rounded-xl transition-all text-left ${isSelected ? "bg-[#5E6AD2]/30 border border-[#5E6AD2]/60 text-white font-semibold shadow-sm" : "hover:bg-white/[0.08] text-gray-200 hover:text-white border border-transparent"}`}
                     >
-                      <div className={`w-8 h-8 rounded-xl bg-gradient-to-br ${r.color} flex items-center justify-center shrink-0 shadow-sm`}>
-                        <Icon className="w-4 h-4 text-white" />
-                      </div>
+                      <div className={`w-8 h-8 rounded-xl bg-gradient-to-br ${role.color} flex items-center justify-center shrink-0 shadow-sm`}><Icon className="w-4 h-4 text-white" /></div>
                       <div className="flex-1 min-w-0">
-                        <div className="text-sm font-semibold truncate flex items-center justify-between">
-                          <span>{r.label}</span>
-                          {isSelected && <span className="w-2 h-2 rounded-full bg-[#8E99F3] shadow-[0_0_8px_#8E99F3]" />}
-                        </div>
-                        <div className="text-xs text-gray-300 truncate">{r.detail}</div>
+                        <div className="text-sm font-semibold truncate flex items-center justify-between"><span>{role.label}</span>{isSelected && <span className="w-2 h-2 rounded-full bg-[#8E99F3] shadow-[0_0_8px_#8E99F3]" />}</div>
+                        <div className="text-xs text-gray-300 truncate">{role.detail}</div>
                       </div>
                     </button>
                   );
@@ -211,11 +202,11 @@ export function Navbar({ activeRole, setActiveRole, activeTab, setActiveTab }: N
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden border-b border-white/20 bg-[#07070A]/95 backdrop-blur-2xl overflow-hidden"
+            className="lg:hidden border-b border-white/20 bg-[#18191F]/95 backdrop-blur-2xl overflow-hidden"
           >
             <div className="p-4 space-y-2">
               <div className="text-xs font-mono text-gray-300 font-bold px-2 py-1">Navigation Views</div>
-              {navItems.map((item) => {
+              {visibleNavItems.map((item) => {
                 const Icon = item.icon;
                 const isActive = activeTab === item.id;
                 return (

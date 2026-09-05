@@ -73,7 +73,7 @@ export function BentoGrid() {
             </div>
 
             {/* Interactive Visual Graphic inside Hero Card */}
-            <div className="mt-6 relative w-full h-48 rounded-xl bg-[#050506] border border-white/10 overflow-hidden flex items-center justify-center">
+            <div className="mt-6 relative w-full h-48 rounded-xl bg-[#17181E] border border-white/10 overflow-hidden flex items-center justify-center">
               {/* Simulated Ambient Blobs */}
               <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full bg-[#5E6AD2]/40 blur-2xl animate-pulse" />
               <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-40 h-40 rounded-full bg-purple-600/30 blur-2xl animate-float-reverse" />
@@ -114,7 +114,7 @@ export function BentoGrid() {
                   placeholder="Type a command..."
                   value={cmdSearch}
                   onChange={(e) => setCmdSearch(e.target.value)}
-                  className="w-full pl-8 pr-3 py-1.5 rounded-lg bg-black/60 border border-white/10 text-xs text-gray-200 placeholder-gray-500 focus:outline-none focus:border-[#5E6AD2]"
+                  className="w-full pl-8 pr-3 py-1.5 rounded-lg bg-[#14151A]/80 border border-white/10 text-xs text-gray-200 placeholder-gray-500 focus:outline-none focus:border-[#5E6AD2]"
                 />
               </div>
 
@@ -176,7 +176,7 @@ export function BentoGrid() {
               </div>
               
               {/* Toggle */}
-              <div className="flex items-center gap-1 bg-black/50 p-1 rounded-lg border border-white/10 text-xs">
+              <div className="flex items-center gap-1 bg-[#14151A]/90 p-1 rounded-lg border border-white/10 text-xs">
                 <button
                   onClick={() => setSelectedDepth("flat")}
                   className={`px-2.5 py-1 rounded transition-all ${

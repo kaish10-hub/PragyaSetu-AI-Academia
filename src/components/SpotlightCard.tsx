@@ -42,7 +42,7 @@ export function SpotlightCard({
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`relative overflow-hidden border border-white/[0.06] bg-gradient-to-b from-white/[0.07] to-white/[0.02] ${radiusClassName} shadow-linear-card hover:shadow-linear-hover hover:border-white/[0.12] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${className}`}
+      className={`relative overflow-hidden border border-white/[0.12] bg-gradient-to-b from-white/[0.10] to-white/[0.04] ${radiusClassName} shadow-linear-card hover:shadow-linear-hover hover:border-white/[0.18] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${className}`}
       {...props}
     >
       {/* Top Hairline Inner Highlight */}

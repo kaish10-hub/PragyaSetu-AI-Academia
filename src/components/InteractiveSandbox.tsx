@@ -132,14 +132,14 @@ export function InteractiveSandbox() {
                   {copiedCode ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
                 </button>
               </div>
-              <pre className="p-3 rounded-lg bg-black/80 border border-white/10 text-[11px] font-mono text-gray-300 overflow-x-auto">
+              <pre className="p-3 rounded-lg bg-[#14151A]/90 border border-white/10 text-[11px] font-mono text-gray-300 overflow-x-auto">
                 {generatedSnippet}
               </pre>
             </div>
           </SpotlightCard>
 
           {/* Live Preview Card Panel (7 Columns) */}
-          <div className="lg:col-span-7 relative p-8 rounded-2xl bg-[#08080C] border border-white/10 min-h-[420px] flex flex-col items-center justify-center overflow-hidden">
+          <div className="lg:col-span-7 relative p-8 rounded-2xl bg-[#191A21] border border-white/10 min-h-[420px] flex flex-col items-center justify-center overflow-hidden">
             
             {/* Dynamic Custom Light Blob in Preview */}
             <div

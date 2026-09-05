@@ -109,8 +109,8 @@ export function Pricing() {
               key={index}
               className={`p-8 flex flex-col justify-between relative ${
                 plan.popular
-                  ? "border-[#5E6AD2]/50 shadow-[0_0_50px_rgba(94,106,210,0.2)] bg-gradient-to-b from-[#5E6AD2]/15 to-white/[0.03]"
-                  : "bg-white/[0.03]"
+                  ? "border-[#5E6AD2]/50 shadow-[0_0_50px_rgba(94,106,210,0.2)] bg-gradient-to-b from-[#5E6AD2]/15 to-white/[0.05]"
+                  : "bg-white/[0.05]"
               }`}
             >
               {plan.popular && (

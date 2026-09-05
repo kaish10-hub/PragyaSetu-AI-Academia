@@ -14,14 +14,29 @@ import {
   Zap 
 } from "lucide-react";
 import { SpotlightCard } from "./SpotlightCard";
+import { ActiveRole } from "./Navbar";
 
-export function InstitutionalAnalytics() {
+interface InstitutionalAnalyticsProps {
+  activeRole: ActiveRole;
+}
+
+export function InstitutionalAnalytics({ activeRole }: InstitutionalAnalyticsProps) {
   const departmentMetrics = [
     { dept: "B.Tech Computer Science & AI", students: 450, placementReady: 96, topGap: "Ayush GCP Ethics" },
     { dept: "Ayush Medicine & Surgery (BAMS)", students: 380, placementReady: 91, topGap: "AI Data Analysis" },
     { dept: "Biotechnology & Bioinformatics", students: 290, placementReady: 94, topGap: "Full-Stack Web APIs" },
     { dept: "Pharmacology & Formulations", students: 310, placementReady: 88, topGap: "Biomedical Signal IoT" }
   ];
+
+  if (activeRole === "student" || activeRole === "industry") {
+    return (
+      <div className="space-y-8">
+        <div className="border-b border-white/15 pb-6"><div className="flex items-center gap-3 mb-1.5"><span className="p-2 rounded-xl bg-indigo-500/20 border border-indigo-500/40 text-indigo-500"><BarChart3 className="w-6 h-6" /></span><h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Platform Readiness Snapshot</h2></div><p className="text-sm sm:text-base text-gray-300 font-medium">A high-level view of current placement readiness and opportunity activity across Pragya Setu.</p></div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6"><SpotlightCard className="p-6 bg-[#1C1D24]/90"><div className="text-xs text-gray-400">Overall Readiness</div><div className="text-3xl font-bold text-emerald-500 mt-2">94.8%</div><div className="text-xs text-gray-400 mt-2">Verified skill match</div></SpotlightCard><SpotlightCard className="p-6 bg-[#1C1D24]/90"><div className="text-xs text-gray-400">Active Opportunities</div><div className="text-3xl font-bold text-[#7B88ED] mt-2">2,410</div><div className="text-xs text-gray-400 mt-2">Internships and jobs</div></SpotlightCard><SpotlightCard className="p-6 bg-[#1C1D24]/90"><div className="text-xs text-gray-400">Industry Partners</div><div className="text-3xl font-bold text-amber-500 mt-2">520+</div><div className="text-xs text-gray-400 mt-2">Across Ayush HealthTech</div></SpotlightCard></div>
+        <SpotlightCard className="p-6 bg-[#1C1D24]/90"><h3 className="text-base font-semibold text-white mb-4">Public Readiness Signals</h3><div className="grid grid-cols-1 md:grid-cols-3 gap-4"><div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-sm text-emerald-500">Placement readiness is trending upward</div><div className="p-4 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-sm text-indigo-500">Biomedical AI demand is growing</div><div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20 text-sm text-amber-500">Clinical research remains a priority gap</div></div></SpotlightCard>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-8">
@@ -50,7 +65,7 @@ export function InstitutionalAnalytics() {
 
       {/* Metric Cards Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <SpotlightCard className="p-5 border border-white/10 bg-[#0A0A0E]/90 rounded-2xl">
+        <SpotlightCard className="p-5 border border-white/10 bg-[#1C1D24]/90 rounded-2xl">
           <div className="text-gray-400 text-xs mb-1 font-mono">Total Monitored Students</div>
           <div className="text-2xl font-bold text-white font-mono flex items-center justify-between">
             <span>14,280</span>
@@ -61,7 +76,7 @@ export function InstitutionalAnalytics() {
           <div className="text-[11px] text-gray-400 mt-2">Across 18 Affiliated Institutes</div>
         </SpotlightCard>
 
-        <SpotlightCard className="p-5 border border-white/10 bg-[#0A0A0E]/90 rounded-2xl">
+        <SpotlightCard className="p-5 border border-white/10 bg-[#1C1D24]/90 rounded-2xl">
           <div className="text-gray-400 text-xs mb-1 font-mono">Placement Readiness Index</div>
           <div className="text-2xl font-bold text-emerald-400 font-mono flex items-center justify-between">
             <span>94.8%</span>
@@ -72,7 +87,7 @@ export function InstitutionalAnalytics() {
           <div className="text-[11px] text-gray-400 mt-2">Verified Skill Match</div>
         </SpotlightCard>
 
-        <SpotlightCard className="p-5 border border-white/10 bg-[#0A0A0E]/90 rounded-2xl">
+        <SpotlightCard className="p-5 border border-white/10 bg-[#1C1D24]/90 rounded-2xl">
           <div className="text-gray-400 text-xs mb-1 font-mono">Active Internships</div>
           <div className="text-2xl font-bold text-[#7B88ED] font-mono flex items-center justify-between">
             <span>2,410</span>
@@ -83,7 +98,7 @@ export function InstitutionalAnalytics() {
           <div className="text-[11px] text-gray-400 mt-2">88.2% Conversion Rate</div>
         </SpotlightCard>
 
-        <SpotlightCard className="p-5 border border-white/10 bg-[#0A0A0E]/90 rounded-2xl">
+        <SpotlightCard className="p-5 border border-white/10 bg-[#1C1D24]/90 rounded-2xl">
           <div className="text-gray-400 text-xs mb-1 font-mono">Faculty FDP Grants</div>
           <div className="text-2xl font-bold text-purple-300 font-mono flex items-center justify-between">
             <span>1,850</span>
@@ -96,7 +111,7 @@ export function InstitutionalAnalytics() {
       </div>
 
       {/* Detailed Cohort Breakdown Table */}
-      <SpotlightCard className="p-6 border border-white/10 bg-[#0A0A0E]/90 rounded-2xl">
+      <SpotlightCard className="p-6 border border-white/10 bg-[#1C1D24]/90 rounded-2xl">
         <h3 className="text-sm font-semibold text-white mb-4 flex items-center gap-2">
           <Layers className="w-4 h-4 text-[#7B88ED]" />
           <span>Departmental Placement Readiness & Skill Gap Cohort Metrics</span>

@@ -164,7 +164,7 @@ export function HeroBanner({ activeRole, setActiveTab }: HeroBannerProps) {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="grid grid-cols-2 md:grid-cols-4 gap-6 w-full"
         >
-          <div className="p-6 rounded-2xl bg-[#0A0A0D]/95 border border-white/20 backdrop-blur-xl flex items-center gap-5 shadow-2xl">
+          <div className="p-6 rounded-2xl bg-[#1C1D24]/95 border border-white/20 backdrop-blur-xl flex items-center gap-5 shadow-2xl">
             <div className="w-14 h-14 rounded-2xl bg-blue-500/20 border border-blue-500/40 flex items-center justify-center shrink-0">
               <Users className="w-7 h-7 text-blue-400" />
             </div>
@@ -174,7 +174,7 @@ export function HeroBanner({ activeRole, setActiveTab }: HeroBannerProps) {
             </div>
           </div>
 
-          <div className="p-6 rounded-2xl bg-[#0A0A0D]/95 border border-white/20 backdrop-blur-xl flex items-center gap-5 shadow-2xl">
+          <div className="p-6 rounded-2xl bg-[#1C1D24]/95 border border-white/20 backdrop-blur-xl flex items-center gap-5 shadow-2xl">
             <div className="w-14 h-14 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center shrink-0">
               <Building2 className="w-7 h-7 text-emerald-400" />
             </div>
@@ -184,7 +184,7 @@ export function HeroBanner({ activeRole, setActiveTab }: HeroBannerProps) {
             </div>
           </div>
 
-          <div className="p-6 rounded-2xl bg-[#0A0A0D]/95 border border-white/20 backdrop-blur-xl flex items-center gap-5 shadow-2xl">
+          <div className="p-6 rounded-2xl bg-[#1C1D24]/95 border border-white/20 backdrop-blur-xl flex items-center gap-5 shadow-2xl">
             <div className="w-14 h-14 rounded-2xl bg-purple-500/20 border border-purple-500/40 flex items-center justify-center shrink-0">
               <TrendingUp className="w-7 h-7 text-purple-300" />
             </div>
@@ -194,7 +194,7 @@ export function HeroBanner({ activeRole, setActiveTab }: HeroBannerProps) {
             </div>
           </div>
 
-          <div className="p-6 rounded-2xl bg-[#0A0A0D]/95 border border-white/20 backdrop-blur-xl flex items-center gap-5 shadow-2xl">
+          <div className="p-6 rounded-2xl bg-[#1C1D24]/95 border border-white/20 backdrop-blur-xl flex items-center gap-5 shadow-2xl">
             <div className="w-14 h-14 rounded-2xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center shrink-0">
               <ShieldCheck className="w-7 h-7 text-amber-400" />
             </div>

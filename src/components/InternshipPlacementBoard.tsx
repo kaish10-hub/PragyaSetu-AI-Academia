@@ -161,7 +161,7 @@ export function InternshipPlacementBoard({ activeRole }: InternshipPlacementBoar
       </div>
 
       {/* Filter Tabs & Search Bar */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#0D0D12] p-2.5 rounded-2xl border border-white/20 shadow-xl">
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#20212A] p-2.5 rounded-2xl border border-white/20 shadow-xl">
         {/* Category Pills */}
         <div className="flex items-center gap-1.5 w-full sm:w-auto overflow-x-auto">
           <button
@@ -217,7 +217,7 @@ export function InternshipPlacementBoard({ activeRole }: InternshipPlacementBoar
         {filteredOpps.map((opp) => {
           const status = appliedStatus[opp.id];
           return (
-            <SpotlightCard key={opp.id} className="p-6 border border-white/20 bg-[#0A0A0E]/95 rounded-2xl flex flex-col justify-between hover:border-white/40 transition-all shadow-xl">
+            <SpotlightCard key={opp.id} className="p-6 border border-white/20 bg-[#1C1D24]/95 rounded-2xl flex flex-col justify-between hover:border-white/40 transition-all shadow-xl">
               <div>
                 {/* Header Badge Strip */}
                 <div className="flex items-center justify-between gap-2 mb-3">
@@ -306,12 +306,12 @@ export function InternshipPlacementBoard({ activeRole }: InternshipPlacementBoar
       {/* APPLICATION MODAL */}
       <AnimatePresence>
         {selectedOpp && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#14151A]/80 backdrop-blur-md">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="w-full max-w-xl bg-[#0A0A0E] border border-white/10 rounded-2xl p-6 shadow-2xl space-y-6 max-h-[90vh] overflow-y-auto"
+              className="w-full max-w-xl bg-[#1C1D24] border border-white/10 rounded-2xl p-6 shadow-2xl space-y-6 max-h-[90vh] overflow-y-auto"
             >
               <div className="flex items-center justify-between border-b border-white/10 pb-4">
                 <div>
@@ -395,12 +395,12 @@ export function InternshipPlacementBoard({ activeRole }: InternshipPlacementBoar
       {/* POST OPPORTUNITY MODAL FOR RECRUITERS */}
       <AnimatePresence>
         {showPostModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#14151A]/80 backdrop-blur-md">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="w-full max-w-lg bg-[#0A0A0E] border border-white/10 rounded-2xl p-6 shadow-2xl space-y-4"
+              className="w-full max-w-lg bg-[#1C1D24] border border-white/10 rounded-2xl p-6 shadow-2xl space-y-4"
             >
               <div className="flex items-center justify-between border-b border-white/10 pb-3">
                 <h3 className="text-base font-bold text-white flex items-center gap-2">
@@ -438,8 +438,8 @@ export function InternshipPlacementBoard({ activeRole }: InternshipPlacementBoar
                     <label className="block text-gray-300 mb-1">Category</label>
                     <select
                       value={newType}
-                      onChange={e => setNewType(e.target.value as any)}
-                      className="w-full p-2.5 rounded-xl bg-[#121218] border border-white/10 text-white"
+                      onChange={e => setNewType(e.target.value as OpportunityItem["type"])}
+                      className="w-full p-2.5 rounded-xl bg-[#252630] border border-white/10 text-white"
                     >
                       <option value="internship">Student Internship</option>
                       <option value="job">Entry-Level Job</option>

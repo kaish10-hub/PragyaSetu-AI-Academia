@@ -5,7 +5,7 @@ import { Terminal, Globe, Share2, MessageSquare, ShieldCheck } from "lucide-reac
 
 export function Footer() {
   return (
-    <footer className="relative z-10 bg-[#020203] border-t border-white/[0.06] pt-16 pb-12 text-xs text-[#8A8F98]">
+    <footer className="relative z-10 bg-[#14151A] border-t border-white/[0.12] pt-16 pb-12 text-xs text-[#8A8F98]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 pb-12 border-b border-white/[0.06]">
